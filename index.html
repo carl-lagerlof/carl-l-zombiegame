@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://spelprogrammering.nu/simple.js">
+        
+        var zombies = [];
+
+        var player={x:1500, y:100, size: 5, xSpeed: 0, ySpeed: 0 };
+
+        document.body.style.background
+
+        var i = 0;
+
+        while (i < 10)
+         {
+            zombies.push ({x: -50, y: random(totalHeight), speed: random(1,4)});
+
+            i += 1;
+         }
+
+        function update()
+        {
+            clearScreen();
+            
+            
+       
+ 
+
+            player.xSpeed=0
+            player.ySpeed=0
+
+       if (keyboard.d) {
+        player.xSpeed += 10;
+        player.ySpeed =0; picture(player.x + 30, player.y, "./img/jonesright.png");
+    } 
+    else {
+        picture(player.x, player.y, "./img/jonesleft.png");
+    }
+
+       if (keyboard.w){
+       player.ySpeed -= 10;
+       player.xSpeed = 0;
+       }
+
+
+       if (keyboard.s){
+       player.ySpeed += 10;
+       player.xSpeed =0;
+       }
+
+
+       if (keyboard.a){
+       player.xSpeed -= 10;
+       player.ySpeed =0;
+       }
+
+
+       player.x += player.xSpeed; 
+       player.y +=player.ySpeed; 
+       
+       
+
+            var i = 0;
+
+            while (i < 10)
+             { 
+
+                var zombie = zombies[i];
+
+                picture(zombie.x, zombie.y, "./img/zombieright.png");
+
+                if (zombie.x < player.x)
+                zombie.x += zombie.speed; 
+                else 
+                zombie.x -= zombie.speed;
+
+                if (zombie.y < player.y)
+                zombie.y += zombie.speed; 
+                else 
+                zombie.y -= zombie.speed;
+
+                if (distance(player, zombie) < 5)
+               {
+             
+                alert("Game Over");
+                stopUpdate();
+             }
+            i += 1
+            }
+        }
+  
+     
+
+    </script>
+    
+</body>
+</html>
